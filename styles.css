@@ -291,11 +291,17 @@ article h1 {
 }
 
 .dialogcontent {
-  background-color: beige;
+  background-color: rgb(56, 97, 56);
   padding: 10vw 8vw 8vw 8vw;
   position: relative;
 }
-
+.dialogcontent h1{
+    color: wheat;
+}
+.dialogcontent button{
+    color: wheat;
+    margin: 1.5vw;
+}
 .dialog .closebutton {
   position: absolute;
   top: 4vw;

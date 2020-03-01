@@ -39,6 +39,7 @@ function start() {
     HTML.displayHufflepuff = document.querySelector(".hufflepuff");
     HTML.displayRavenclaw = document.querySelector(".ravenclaw");
     HTML.displayGryffindor = document.querySelector(".gryffindor");
+    HTML.hack = document.querySelector("article .title");
 
     HTML.thelist = document.querySelector("section#contentlist");
     HTML.blurbg = document.querySelector("article");
@@ -56,6 +57,9 @@ function start() {
 
     //Search event for search
     HTML.searchinput.addEventListener("keyup", searching);
+
+    //Activate hacking
+    HTML.hack.addEventListener("click", hackTheSystem);
     loadBlood();
 }
 
@@ -474,7 +478,7 @@ function togglePrefect(thisStudent) {
     //total prefects: check each house and each gender
     const theOtherPrefect = students.filter(student => student.prefect && student.house === thisStudent.house && student.gender === thisStudent.gender ? true : false);
 
-    if (totalPrefects.length === 0 || thisStudent.prefect === true) {
+    if (theOtherPrefect.length === 0 || thisStudent.prefect === true) {
         thisStudent.prefect = thisStudent.prefect ? false : true;
         document.querySelector("[data-field=prefect]").style.filter = "none";
     } else {
