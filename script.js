@@ -165,7 +165,7 @@ function prepareObject(jsonObject) {
     //PHOTO
     const photo =
         lastName.toLowerCase() + "_" + firstName[0].toLowerCase() + ".png";
-    let patilsPhoto = lastName + "_" + firstName.toLowerCase() + ".png";
+    let patilsPhoto = lastName.toLowerCase() + "_" + firstName.toLowerCase() + ".png";
     let fletchleysPhoto =
         lastName.substring(6) + "_" + firstName[0].toLowerCase() + ".png";
     //Put values into new properties
