@@ -384,8 +384,7 @@ article h1 {
 
   #onestudent {
     padding: 2vw;
-    max-width: 50vw;
-    max-height: 80vh;
+    min-height: 70vh;
   }
 
   #onestudent .rowbottom {
@@ -469,8 +468,8 @@ article h1 {
   #onestudent {
     padding: 1vw;
     max-width: 40vw;
-    max-height: 60vh;
-    margin: 10vw auto;
+    max-height: 85vh;
+    margin: 4vw auto;
   }
 
   #onestudent .right {
