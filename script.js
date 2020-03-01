@@ -312,15 +312,12 @@ function sortByName(sortInfo, sortDir) {
 
 function buildList() {
   const currentList = students;
-
-  // TODO: Add filter and sort on this list, before displaying
   displayList(currentList);
 }
 
 function displayList(students) {
   // clear the list
   HTML.thelist.innerHTML = "";
-
   // build a new list
   students.forEach(displayStudent);
 }
@@ -331,7 +328,6 @@ function displayStudent(student) {
   const displayHufflepuff = students.filter(student => student.house === "Hufflepuff");
   const displayRavenclaw = students.filter(student => student.house === "Ravenclaw");
   const displayGryffindor = students.filter(student => student.house === "Gryffindor");
-  // const displayExpelled = expell.filter(expelled => expell.house === "Gryffindor");
 
   HTML.displaySlytherin.textContent = "Slytherin: " + displaySlytherin.length + " students";
   HTML.displayHufflepuff.textContent = "Hufflepuff: " + displayHufflepuff.length + " students";
@@ -339,7 +335,6 @@ function displayStudent(student) {
   HTML.displayGryffindor.textContent = "Gryffindor: " + displayGryffindor.length + " students";
 
   HTML.displaystudents.textContent = "Current total: " + students.length + " students";
-
 
   // create clone
   const clone = HTML.theclone.content.cloneNode(true);
@@ -477,21 +472,21 @@ function toggleSquad(student) {
 function togglePrefect(thisStudent) {
   console.log("toggle prefect");
   //total prefects: check each house and each gender
-  const totalPrefects = students.filter(student => student.prefect && student.house === thisStudent.house && student.gender === thisStudent.gender ? true : false);
+  const theOtherPrefect = students.filter(student => student.prefect && student.house === thisStudent.house && student.gender === thisStudent.gender ? true : false);
 
   if (totalPrefects.length === 0 || thisStudent.prefect === true) {
     thisStudent.prefect = thisStudent.prefect ? false : true;
     document.querySelector("[data-field=prefect]").style.filter = "none";
   } else {
-    alertChangePrefects(thisStudent, totalPrefects[0]);
+    alertChangePrefects(thisStudent, theOtherPrefect[0]);
   }
   displayList(students);
 }
 
-function alertChangePrefects(thisStudent, totalPrefects) {
+function alertChangePrefects(thisStudent, theOtherPrefect) {
   console.log("alertChangePrefects");
   document.querySelector("#onlytwostudents").classList.add("show");
-  document.querySelector("#onlytwostudents .student1").textContent = `${totalPrefects.firstname} ${totalPrefects.lastname} (${totalPrefects.gender}), from ${totalPrefects.house}`;
+  document.querySelector("#onlytwostudents .student1").textContent = `${theOtherPrefect.firstname} ${theOtherPrefect.lastname} (${theOtherPrefect.gender}), from ${theOtherPrefect.house}`;
   document.querySelector("#onlytwostudents .student2").textContent = `${thisStudent.firstname} ${thisStudent.lastname} (${thisStudent.gender}), from ${thisStudent.house}`;
 
   removeButtons(totalPrefects, thisStudent);
@@ -508,7 +503,7 @@ function removeButtons(totalPrefects, thisStudent) {
 
   function remove1st() {
     console.log("remove the 1st student");
-    totalPrefects[0].prefect = false;
+    theOtherPrefect[0].prefect = false;
     document.querySelector("#onlytwostudents").classList.remove("show");
 
     thisStudent.prefect = true;
@@ -524,7 +519,7 @@ function removeButtons(totalPrefects, thisStudent) {
 
   function remove2nd() {
     console.log("remove the 2nd student");
-    totalPrefects[1].prefect = false;
+    theOtherPrefect[1].prefect = false;
     document.querySelector("#onlytwostudents").classList.remove("show");
 
     thisStudent.prefect = true;
